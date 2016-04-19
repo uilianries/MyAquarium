@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<title>Aquario</title>
 	<meta charset="utf-8">
@@ -7,9 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/main_responsive.css">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/carouFredSel.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/carouFredSel.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/mqttws31.js"></script>
+	<script type="text/javascript" src="js/thermal_sensor.js"></script>
+	<script type="text/javascript" src="js/ph_sensor.js"></script>
+	<script type="text/javascript" src="js/light_sensor.js"></script>
 </head>
 <body>
 
@@ -46,7 +50,7 @@
 					</div>
 					<div class="details_exp">
 						<h3>Temperatura</h3>
-                        <p><b>27.1 ºC</b></p>
+                        <p id="temperature"><b>00.0 ºC</b></p>
 						<a href="#">Histórico<span>→</span></a>
 					</div>
 				</div>
@@ -56,7 +60,7 @@
 					</div>
 					<div class="details_exp">
 						<h3>Iluminação</h3>
-                        <p><b>64%</b></p>
+                        <p id="light"><b>00%</b></p>
 						<a href="#">Histórico<span>→</span></a>
 					</div>
 				</div>
@@ -66,7 +70,7 @@
 					</div>
 					<div class="details_exp">
 						<h3>pH</h3>
-                        <p><b>6.8</b></p>
+                        <p id="ph"><b>0.0</b></p>
 						<a href="#">Histórico<span>→</span></a>
 					</div>
 				</div>
