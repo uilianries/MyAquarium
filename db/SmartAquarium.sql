@@ -5,22 +5,22 @@ COMMIT;
 ATTACH DATABASE 'SmartAquarium.db' as 'smartaquarium';
 
 CREATE TABLE smartaquarium.temperature (
-    id INT PRIMARY KEY NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     value REAL
 );
 
 CREATE TABLE smartaquarium.ph (
-    id INT PRIMARY KEY NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     value REAL
 );
 
 CREATE TABLE smartaquarium.light (
-    id INT PRIMARY KEY NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     value INT
 );
 
 CREATE TABLE smartaquarium.feeder (
-    id INT PRIMARY KEY NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     value DATE
 );
 
