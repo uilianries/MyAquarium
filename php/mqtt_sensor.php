@@ -1,5 +1,6 @@
 <?php
 require("phpMQTT.php");
+include_once("logger.php");
 
 class host_config {
   public $url;
@@ -28,11 +29,13 @@ class mqtt_sensor {
     private $answer;
     
     function __construct($host_config, $user_config = null) {
+    logger::information("Create MQTT - broker: $host_config->url:$host_config->port");
     $this->mqtt_handle = new phpMQTT($host_config->url, $host_config->port, "MQTTSensor".rand()); 
     
         if (!$user_config) {
             $user_config = new user_config();
         }
+        logger::information("Connect MQTT - username: $user_config->username - password: $user_config->password");
         if (!$this->mqtt_handle->connect(true, NULL, $user_config->username, $user_config->password)) {
             exit(1);
         }

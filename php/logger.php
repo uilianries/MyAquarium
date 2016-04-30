@@ -9,7 +9,12 @@
 class logger
 {
     static private function publish($level, $message) {
-        error_log(date("r"). ": $level - ".$message."\n", 3 , "/var/tmp/php-errors.log");
+        $today = localtime();
+        $year = $today[5]+1900;
+        $month = $today[4];
+        $day = $today[3];
+        $prefix = "$year-$month-$day";
+        error_log(date("r"). ": $level - ".$message."\n", 3 , "/var/tmp/$prefix-php-errors.log");
     }
     
     static function information($message) {

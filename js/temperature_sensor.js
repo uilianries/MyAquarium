@@ -10,7 +10,7 @@ $(function() {
         });
 
         request.success(function (result) {
-            var level = result['value'];
+            var level = result['value'].toFixed(1);
             $("#temperature").html("<b>" + level + " ºC</b>");
             console.log("Current temperature level: " + level);
         });

@@ -37,7 +37,7 @@ $(function() {
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
-                    'Click e arraste no gráfico para aplicar o zoom' : 'Pinch the chart to zoom in'
+                    'Clique e arraste no gráfico para aplicar o zoom' : 'Pinch the chart to zoom in'
             },
             xAxis: {
                 categories: timestamps
