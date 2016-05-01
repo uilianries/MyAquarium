@@ -8,7 +8,7 @@ class subject_db {
 
     function __construct($sensor_name) {
         $this->sensor_name = $sensor_name;
-        logger::information("Connect on data base: sensor $sensor_name");
+        logger::information("Connect on data base: device $sensor_name");
         $this->db_handle = new SQLite3('/var/www/html/db/SmartAquarium.sqlite', SQLITE3_OPEN_READWRITE);
         if (!$this->db_handle) {
           logger::error("Ops! Could not connect on data base");

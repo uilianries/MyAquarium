@@ -24,6 +24,6 @@ CREATE TABLE smartaquarium.light (
 
 CREATE TABLE smartaquarium.feeder (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    value DATE NOT NULL
+    timestamp DATE DEFAULT (datetime('now','localtime')),
+    value INTEGER DEFAULT (0)
 );
-

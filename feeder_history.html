@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/main_responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/carouFredSel.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/feeder_history.js"></script>
 </head>
 <body>
 
@@ -16,7 +22,6 @@
         <nav id="nav_menu">
             <ul>
                 <li><a href="index.html">Smart Aquarium</a></li>
-                <li><a href="feeder.html">Alimentador</a></li>
                 <li><a href="http://video-smartaquarium.noip.me:8081">Video</a></li>
                 <li><a href="https://github.com/uilianries/SmartAquarium">Sobre</a></li>
             </ul>
@@ -37,15 +42,7 @@
 <section class="features">
 
     <div class="wrapper">
-        <div class="feature">
-            <div class="ficon">
-                <img src="img/error.png" alt="">
-            </div>
-            <div class="details_exp">
-                <h3>ERRO!</h3>
-                <p><b>Algo de errado não está certo!</b></p>
-            </div>
-        </div>
+        <table id="feeder_container" class="display" width="50%" style="text-align: center"></table>
     </div>
 
 </section><!--  End Features  -->

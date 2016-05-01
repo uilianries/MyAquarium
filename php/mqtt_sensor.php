@@ -65,5 +65,9 @@ class mqtt_sensor {
         $this->mqtt_handle->subscribe($values, 0);
     }
 
+    function publish($topic, $payload) {
+        $this->mqtt_handle->publish($topic, $payload);
+    }
+
   
 }
