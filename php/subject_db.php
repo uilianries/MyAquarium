@@ -4,11 +4,9 @@ include_once("logger.php");
 class subject_db {
 
     private $db_handle;
-    private $sensor_name;
 
-    function __construct($sensor_name) {
-        $this->sensor_name = $sensor_name;
-        logger::information("Connect on data base: device $sensor_name");
+    function __construct() {
+        logger::information("Connect on data base");
         $this->db_handle = new SQLite3('/var/www/html/db/SmartAquarium.sqlite', SQLITE3_OPEN_READWRITE);
         if (!$this->db_handle) {
           logger::error("Ops! Could not connect on data base");
@@ -19,14 +17,14 @@ class subject_db {
         $this->db_handle->close();
     }
 
-    function insert($level) {
-        logger::information("Insert table: $this->sensor_name - level: $level");
-        $this->db_handle->query("INSERT INTO $this->sensor_name (value) VALUES ($level)");
+    function insert($table, $level) {
+        logger::information("Insert table: $table - level: $level");
+        $this->db_handle->query("INSERT INTO $table (value) VALUES ($level)");
     }
 
-    function select() {
-        logger::information("Select table: $this->sensor_name");
-        $query = $this->db_handle->query("SELECT * FROM $this->sensor_name ORDER BY id DESC LIMIT 1;");
+    function select($table) {
+        logger::information("Select table: $table");
+        $query = $this->db_handle->query("SELECT * FROM $table ORDER BY id DESC LIMIT 1;");
         $row = $query->fetchArray();
         logger::information("Query result: ".implode($row));
 
@@ -35,9 +33,9 @@ class subject_db {
         return $array;
     }
 
-    function history() {
-        logger::information("History table: $this->sensor_name");
-        $query = $this->db_handle->query("SELECT * FROM $this->sensor_name;");
+    function history($table) {
+        logger::information("History table: $table");
+        $query = $this->db_handle->query("SELECT * FROM $table;");
         
         $row = array();
 

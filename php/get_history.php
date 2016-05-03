@@ -8,5 +8,5 @@ if ($sensor_name == '') {
     die("Sensor name is Empty");
 }
 
-$db = new subject_db($sensor_name);
-echo json_encode($db->history());
+$db = new subject_db();
+echo json_encode($db->history($sensor_name));

@@ -1,16 +1,12 @@
 <?php
-include_once("factory_actuator.php");
-include_once("subject_db.php");
+include_once("mqtt_sensor.php");
 
 function main() {
-    $actuator_name = "feeder";
-    $local = false;
+    $host_config = new host_config('m11.cloudmqtt.com', 15347);
+    $user_config = new user_config('feeder_actuator','feederactuator');
 
-    $actuator = factory_actuator::create($actuator_name, $local);
-    $actuator->on();
-    sleep(1);
-    $actuator->off();
-    $actuator->update_db();
+    $mqtt_sensor = new mqtt_sensor($host_config, $user_config);
+    $mqtt_sensor->publish('smartaquarium/actuator/feeder/command', 'on');
 }
 
 main();

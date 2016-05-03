@@ -1,4 +1,5 @@
 <?php
+include_once("logger.php");
 
 /*
  	phpMQTT
@@ -78,7 +79,7 @@ class phpMQTT {
 		$this->socket = fsockopen($address, $this->port, $errno, $errstr, 60);
 
 		if (!$this->socket ) {
-		    if($this->debug) error_log("fsockopen() $errno, $errstr \n");
+		    if($this->debug) logger::error("fsockopen() $errno, $errstr");
 			return false;
 		}
 
@@ -139,7 +140,7 @@ class phpMQTT {
 	 	$string = $this->read(4);
 
 		if(ord($string{0})>>4 == 2 && $string{3} == chr(0)){
-			if($this->debug) echo "Connected to Broker\n"; 
+			if($this->debug) logger::information("Connected to Broker");
 		}else{	
 			error_log(sprintf("Connection failed! (Error: 0x%02x 0x%02x)\n", 
 			                        ord($string{0}),ord($string{3})));
@@ -211,7 +212,7 @@ class phpMQTT {
 			$head = chr(0xc0);		
 			$head .= chr(0x00);
 			fwrite($this->socket, $head, 2);
-			if($this->debug) echo "ping sent\n";
+			if($this->debug) logger::information("ping sent");
 	}
 
 	/* disconnect: sends a proper disconect cmd */
@@ -280,7 +281,7 @@ class phpMQTT {
 				}
 			}
 
-			if($this->debug && !$found) echo "msg recieved but no match in subscriptions\n";
+			if($this->debug && !$found) logger::error("msg recieved but no match in subscriptions");
 	}
 
 	/* proc: the processing loop for an "allways on" client 
@@ -294,7 +295,7 @@ class phpMQTT {
 			
 				//$byte = fgetc($this->socket);
 			if(feof($this->socket)){
-				if($this->debug) echo "eof receive going to reconnect for good measure\n";
+				if($this->debug) logger::information("eof receive going to reconnect for good measure");
 				fclose($this->socket);
 				$this->connect_auto(false);
 				if(count($this->topics))
@@ -311,7 +312,7 @@ class phpMQTT {
 			}else{ 
 			
 				$cmd = (int)(ord($byte)/16);
-				if($this->debug) echo "Recevid: $cmd\n";
+				if($this->debug) logger::information("Recevid: $cmd");
 
 				$multiplier = 1; 
 				$value = 0;
@@ -321,7 +322,7 @@ class phpMQTT {
 					$multiplier *= 128;
 					}while (($digit & 128) != 0);
 
-				if($this->debug) echo "Fetching: $value\n";
+				if($this->debug) logger::information("Fetching: $value");
 				
 				if($value)
 					$string = $this->read($value,"fetch");
@@ -338,13 +339,13 @@ class phpMQTT {
 			}
 
 			if($this->timesinceping < (time() - $this->keepalive )){
-				if($this->debug) echo "not found something so ping\n";
+				if($this->debug) logger::error("not found something so ping");
 				$this->ping();	
 			}
 			
 
 			if($this->timesinceping<(time()-($this->keepalive*2))){
-				if($this->debug) echo "not seen a package in a while, disconnecting\n";
+				if($this->debug) logger::information("not seen a package in a while, disconnecting");
 				fclose($this->socket);
 				$this->connect_auto(false);
 				if(count($this->topics))
