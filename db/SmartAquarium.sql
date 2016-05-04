@@ -27,3 +27,15 @@ CREATE TABLE smartaquarium.feeder (
     timestamp DATE DEFAULT (datetime('now','localtime')),
     value INTEGER DEFAULT (0)
 );
+
+CREATE TABLE smartaquarium.fish (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    timestamp DATE DEFAULT (datetime('now','localtime')),
+    value INTEGER DEFAULT (0)
+);
+
+INSERT INTO temperature (value) VALUES (25.4);
+INSERT INTO ph (value) VALUES (7.1);
+INSERT INTO light (value) VALUES (75);
+INSERT INTO feeder (value) VALUES (0);
+INSERT INTO fish (value) VALUES (1);

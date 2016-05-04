@@ -1,26 +1,26 @@
 $(function() {
 
     $("#betta-config").click(function () {
-        alert("Foo");
+        apply_config(0);
     });
 
     $("#helostoma-config").click(function () {
-        alert("Foo");
+        apply_config(1);
     });
 
     $("#trichogaster-config").click(function () {
-        alert("Foo");
+        apply_config(2);
     });
 
     $("#macropodus-config").click(function () {
-        alert("Foo");
+        apply_config(3);
     });
 
-    function apply_config(config_name) {
+    function apply_config(config_value) {
         var request = $.ajax({
-            url: 'php/apply_config.php',
+            url: 'php/set_config.php',
             type: 'GET',
-            data: {config: config_name},
+            data: {value: config_value},
             dataType: 'json'
         });
 
@@ -28,7 +28,8 @@ $(function() {
             update_billboard();
         });
 
-        request.fail(function () {
+        request.fail(function (jqXHR, textStatus) {
+            console.log("Could not apply breed: " + textStatus);
             alert("ERRO: Não foi possível aplicar a configuração de raça.");
         });
     }

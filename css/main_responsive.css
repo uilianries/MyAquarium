@@ -83,6 +83,19 @@
     margin-left: 42px;
 }
 
+.button-feeder {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 0px;
+    margin-top: 16px;
+}
+
 ::selection {color:#ffffff;background:#353434;}
 ::-moz-selection {color:#ffffff;background:#353434;}
 
@@ -196,14 +209,11 @@ header ul.social li a.gplus{
     background-position: -72px 0;
 }
 
-
-
-
 /*  Billboard  */
 .billboard{
     width: 100%;
     height: 100%;
-    background: url("../img/billboard3.jpg") no-repeat center center;
+    background: url("../img/billboard_aquarium.jpg") no-repeat center center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
