@@ -5,9 +5,13 @@ class subject_db {
 
     private $db_handle;
 
-    function __construct() {
+    function __construct($write=false) {
         logger::information("Connect on data base");
-        $this->db_handle = new SQLite3('/var/www/html/db/SmartAquarium.sqlite', SQLITE3_OPEN_READWRITE);
+        $flag = SQLITE3_OPEN_READONLY;
+        if ($write) {
+            $flag = SQLITE3_OPEN_READWRITE;
+        }
+        $this->db_handle = new SQLite3('/var/www/html/db/SmartAquarium.sqlite', $flag);
         if (!$this->db_handle) {
           logger::error("Ops! Could not connect on data base");
         }
