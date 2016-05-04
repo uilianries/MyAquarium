@@ -6,7 +6,9 @@ function main() {
     $user_config = new user_config('feeder_actuator','feederactuator');
 
     $mqtt_sensor = new mqtt_sensor($host_config, $user_config);
-    $mqtt_sensor->publish('smartaquarium/actuator/feeder/command', 'on');
+    $mqtt_sensor->publish('smartaquarium/actuator/feeder/command', 'on', 1, 0);
+    
+    return 0;
 }
 
-main();
+echo main();
