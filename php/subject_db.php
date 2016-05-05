@@ -21,9 +21,15 @@ class subject_db {
         $this->db_handle->close();
     }
 
-    function insert($table, $level) {
+    function insert($table, $level, $type="int") {
         logger::information("Insert table: $table - level: $level");
-        $this->db_handle->query("INSERT INTO $table (value) VALUES ($level)");
+
+        $query_statement = "INSERT INTO $table (value) VALUES ($level)";
+        if ($type == "string") {
+            $query_statement = "INSERT INTO $table (value) VALUES (\"$level\")";
+        }
+        
+        $this->db_handle->query($query_statement);
     }
 
     function select($table) {

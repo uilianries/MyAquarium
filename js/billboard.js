@@ -8,28 +8,9 @@ function update_billboard()
 
     request.success(function (data) {
         var banner = data['value'];
-        var fish = "";
 
-        switch (banner) {
-            case 0:
-                fish = 'betta';
-                break;
-            case 1:
-                fish = 'helostoma';
-                break;
-            case 2:
-                fish = 'trichogaster';
-                break;
-            case 3:
-                fish = 'macropodus';
-                break;
-            default:
-                alert("Usando Betta como raça padrão");
-                fish = 'betta';
-        }
-
-        set_billboard_image(fish);
-        set_fish_banner(fish);
+        set_billboard_image(banner);
+        set_fish_banner(banner);
     });
 
     request.fail(function (jqXHR, textStatus) {

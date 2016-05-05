@@ -2,12 +2,13 @@
 include_once("subject_db.php");
 include_once("logger.php");
 include_once("mqtt_sensor.php");
+include_once("breed_db.php");
 
 function update_fish_db($value)
 {
     logger::information("Setting fish config to: $value");
     $db = new subject_db(true);
-    $db->insert("fish", $value);
+    $db->insert("fish", $value, 'string');
 }
 
 function update_fish_mqtt($value)
@@ -16,7 +17,11 @@ function update_fish_mqtt($value)
     $user_config = new user_config('fish_config','fishconfig');
 
     $mqtt_sensor = new mqtt_sensor($host_config, $user_config);
-    $mqtt_sensor->publish('smartaquarium/config/breed', $value, 1, 1);
+
+    $breed_db = new breed_db();
+    $breed_array = $breed_db->get_config($value);
+
+    $mqtt_sensor->publish('smartaquarium/config/breed', json_encode($breed_array), 1, 1);
 }
 
 function main()
