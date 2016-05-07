@@ -21,7 +21,25 @@ function update_fish_mqtt($value)
     $breed_db = new breed_db();
     $breed_array = $breed_db->get_config($value);
 
-    $mqtt_sensor->publish('smartaquarium/config/breed', json_encode($breed_array), 1, 1);
+    $heater_config = [
+        "min" => $breed_array["min_temperature"],
+        "max" => $breed_array["max_temperature"],
+    ];
+
+    $lighting_config = [
+        "min" => $breed_array["min_light"],
+        "max" => $breed_array["max_light"],
+    ];
+
+    $heater_encoded = json_encode($heater_config);
+    $lighting_encoded = json_encode($lighting_config);
+
+    logger::information("Heater config: $heater_encoded");
+    logger::information("Lighting config: $lighting_encoded");
+
+
+    $mqtt_sensor->publish('smartaquarium/actuator/heater/config', $heater_encoded, 1, 1);
+    $mqtt_sensor->publish('smartaquarium/actuator/lighting/config', $lighting_encoded, 1, 1);
 }
 
 function main()
