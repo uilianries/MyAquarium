@@ -45,7 +45,7 @@ class subject_db {
 
     function history($table) {
         logger::information("History table: $table");
-        $query = $this->db_handle->query("SELECT * FROM $table;");
+        $query = $this->db_handle->query("SELECT * FROM $table WHERE timestamp >= date('now', '-1 day') and date('now');");
         
         $row = array();
 
