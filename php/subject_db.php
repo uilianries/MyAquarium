@@ -32,6 +32,14 @@ class subject_db {
         $this->db_handle->query($query_statement);
     }
 
+    function insert_b($table ,$timestamp, $level) {
+        logger::information("Insert table: $table - timestamp: $timestamp - level: $level");
+
+        $query_statement = "INSERT INTO $table (timestamp, value) VALUES ($timestamp, $level)";
+
+        $this->db_handle->query($query_statement);
+    }
+
     function select($table) {
         logger::information("Select table: $table");
         $query = $this->db_handle->query("SELECT * FROM $table ORDER BY id DESC LIMIT 1;");

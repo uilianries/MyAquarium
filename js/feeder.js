@@ -1,6 +1,6 @@
 $(function() {
 
-    function update_ph_sensor() {
+    function update_feeder() {
         var request = $.ajax({
             url: 'php/get_sensor.php',
             type: 'GET',
@@ -19,7 +19,7 @@ $(function() {
         });
 
         request.always(function () {
-            setTimeout(update_ph_sensor, 10000);
+            setTimeout(update_feeder, 10000);
         });
     }
     
@@ -30,7 +30,7 @@ $(function() {
         });
 
         request.success(function () {
-            update_ph_sensor();
+            update_feeder();
         });
 
         request.fail(function (jqXHR, textStatus) {
@@ -38,5 +38,5 @@ $(function() {
         });
     });
 
-    update_ph_sensor();
+    update_feeder();
 });

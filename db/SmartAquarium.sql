@@ -44,6 +44,12 @@ CREATE TABLE smartaquarium.config (
     max_light INTEGER NOT NULL
 );
 
+CREATE TABLE smartaquarium.scheduler (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    timestamp INTEGER NOT NULL,
+    value INTEGER NOT NULL
+);
+
 INSERT INTO config VALUES('betta', 6.6, 7.4, 22.0, 30.0, 40, 80);
 INSERT INTO config VALUES('helostoma', 6.5, 7.0, 23.0, 30.0, 50, 70);
 INSERT INTO config VALUES('trichogaster', 6.4, 7.6, 22.0, 28.0, 50, 70);
@@ -78,3 +84,5 @@ INSERT INTO fish (value) VALUES ('helostoma');
 INSERT INTO fish (value) VALUES ('trichogaster');
 INSERT INTO fish (value) VALUES ('trichogaster');
 INSERT INTO fish (value) VALUES ('betta');
+
+INSERT INTO scheduler (timestamp, value) VALUES (8, 12);

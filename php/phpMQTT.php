@@ -215,7 +215,7 @@ class phpMQTT {
 			if($this->debug) logger::information("ping sent");
 	}
 
-	/* disconnect: sends a proper disconect cmd */
+	/* disconnect: sends a proper disconnect cmd */
 	function disconnect(){
 			$head = " ";
 			$head{0} = chr(0xe0);		
@@ -223,7 +223,7 @@ class phpMQTT {
 			fwrite($this->socket, $head, 2);
 	}
 
-	/* close: sends a proper disconect, then closes the socket */
+	/* close: sends a proper disconnect, then closes the socket */
 	function close(){
 	 	$this->disconnect();
 		fclose($this->socket);	
@@ -262,7 +262,7 @@ class phpMQTT {
 
 	}
 
-	/* message: processes a recieved topic */
+	/* message: processes a received topic */
 	function message($msg){
 		 	$tlen = (ord($msg{0})<<8) + ord($msg{1});
 			$topic = substr($msg,2,$tlen);
@@ -281,7 +281,7 @@ class phpMQTT {
 				}
 			}
 
-			if($this->debug && !$found) logger::error("msg recieved but no match in subscriptions");
+			if($this->debug && !$found) logger::error("msg received but no match in subscriptions");
 	}
 
 	/* proc: the processing loop for an "allways on" client 
@@ -312,7 +312,7 @@ class phpMQTT {
 			}else{ 
 			
 				$cmd = (int)(ord($byte)/16);
-				if($this->debug) logger::information("Recevid: $cmd");
+				if($this->debug) logger::information("Received: $cmd");
 
 				$multiplier = 1; 
 				$value = 0;

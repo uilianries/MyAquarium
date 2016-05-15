@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Smart Aquarium</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Uilian Ries">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/main_responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/carouFredSel.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/billboard.js"></script>
+    <script type="text/javascript" src="js/feeder_scheduler.js"></script>
+    <script type="text/javascript" src="js/feeder.js"></script>
+    <link rel="icon" type="image/png" href="img/fish_icon.png">
+</head>
+<body>
+
+<header>
+    <div class="wrapper">
+        <img src="img/fish_icon.png" alt="SmartAquarium" class="logo">
+        <a href="#" class="menu_icon" id="menu_icon"></a>
+        <nav id="nav_menu">
+            <ul>
+                <li><a href="index.html">Smart Aquarium</a></li>
+                <li><a href="customize.html">Raças</a></li>
+                <li><a href="feeder_scheduler.html">Alimentação</a></li>
+                <li><a href="http://video-smartaquarium.noip.me:8081">Video</a></li>
+                <li><a href="https://github.com/uilianries/SmartAquarium">Sobre</a></li>
+            </ul>
+        </nav>
+			<ul class="social">
+				<li><a class="fb" href="#"></a></li>
+				<li><a class="twitter" href="#"></a></li>
+				<li><a class="gplus" href="#"></a></li>
+			</ul>
+
+
+    </div>
+</header><!--  End Header  -->
+
+<section class="billboard">
+    <div class="wrapper">
+        <div class="caption">
+            <p>Meu aquário</p>
+            <p id="fish-banner">Carregando</p>
+        </div>
+    </div>
+</section><!--  End Billboard  -->
+
+<section class="features">
+
+    <div class="wrapper">
+        <div class="feature">
+            <div class="ficon">
+                <img src="img/icon7.png" alt="">
+            </div>
+            <div class="details_exp">
+                <h3>Última Dispensa</h3>
+                <p id="food" >00/00/0000 00:00:00</p>
+                <a href="feeder_history.html">Histórico<span>→</span></a>
+                <br>
+                <br>
+                <input type="button" class="button-feeder" value="Dispensar Agora" id="dispense">
+            </div>
+        </div>
+        <div class="feature">
+            <div class="ficon">
+                <img src="img/icon1.png" alt="">
+            </div>
+            <div class="details_exp">
+                <h3>Agendado</h3>
+                <p>Horário: <b><span id="sched_actual_time">00</span></b>:00:00 p.m.</p>
+                <p>Intervalo: <b><span id="sched_actual_interval">0</span></b> horas</p>
+            </div>
+        </div>
+        <div class="feature">
+            <div class="ficon">
+                <img src="img/icon2.png" alt="">
+            </div>
+            <div class="details_exp">
+                <h3>Agendar</h3>
+                <p>Horário:
+                    <select id="sched_new_time">
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                        <option value="4">04</option>
+                        <option value="5">05</option>
+                        <option value="6">06</option>
+                        <option value="7">07</option>
+                        <option value="8">08</option>
+                        <option value="9">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    :00:00 p.m.
+                </p>
+                <p>Intervalo:
+                    <select id="sched_new_interval">
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                    </select>
+                    horas
+                </p>
+                <input type="button" class="button-feeder" value="Aplicar" id="sched_button">
+            </div>
+        </div>
+    </div>
+
+</section><!--  End Features  -->
+
+<footer>
+    <a class="rights">Copyright © Uilian Ries - All rights reserved</a>
+</footer><!--  End Footer  -->
+
+</body>
+</html>
